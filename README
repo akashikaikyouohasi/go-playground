@@ -1,0 +1,4 @@
+## 試す方法
+1. `make build`でコンテナ起動
+1. `make shell`でコンテナの中に入る
+1. `go run main.go`でコンパイルと実行
