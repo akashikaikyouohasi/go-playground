@@ -1,0 +1,10 @@
+services:
+  go:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 18080:80
+    volumes:
+      - .:/app
+    tty: true # 起動した状態でコンテナに維持
