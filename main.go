@@ -4,23 +4,24 @@ import (
 	"fmt"
 	"log"
 	"net/http"
-	"net/http/httputil"
 )
 
 func handler ( w http.ResponseWriter, r *http.Request) {
-	dump, err := httputil.DumpRequest(r, true)
-	if err != nil {
-		// エラーがある場合の処理
-		http.Error(w, fmt.Sprint(err), http.StatusInternalServerError)
-		return 
-	}
-	fmt.Println(string(dump))
-	fmt.Fprint(w, "<html><body>hello</body></html>")
+	fmt.Fprint(w, "Welcome Go Playground!!")
+}
+
+func handler_hello_world ( w http.ResponseWriter, r *http.Request) {
+	// レスポンスヘッダーを設定
+	w.Header().Set("Content-Type", "text/plain; charset=utf-8")
+
+	// 文字列を返す
+	fmt.Fprint(w, "Hello, World!!!!")
 }
 
 func main() {
 	var httpServer http.Server
 	http.HandleFunc("/", handler)
+	http.HandleFunc("/hello_world", handler_hello_world)
 	log.Println("start http listening :18888")
 	httpServer.Addr = ":18888"
 	log.Println(httpServer.ListenAndServe())
