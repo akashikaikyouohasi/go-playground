@@ -2,3 +2,4 @@
 1. `make build`でコンテナ起動
 1. `make shell`でコンテナの中に入る
 1. `go run main.go`でコンパイルと実行
+    - DEBUG出力する場合：`DEBUG=true go run main.go`
